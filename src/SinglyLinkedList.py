@@ -1,6 +1,3 @@
-from locale import currency
-
-
 class Node:
     def __init__(self, data):
         self.data = data
@@ -57,7 +54,6 @@ class SinglyLinkedList:
                 break
             c += 1
             current_node = current_node.next
-        
 
     def print_data(self):
         current_node = self.head
