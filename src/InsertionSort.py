@@ -2,7 +2,7 @@ def insertion_sort(thislist):
     length_of_list = len(thislist)
     for i in range(length_of_list-1):
         
-        for j in range(i, 0, -1):
+        for j in range(i+1, -1, -1):
             print(f'{thislist[i]} < {thislist[j]} -> {thislist[i] < thislist[j]}')
             # if thislist[index]  < thislist[j]:
             #     continue
