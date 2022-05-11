@@ -28,14 +28,7 @@ class Solution:
             
             
         return numpad
-                
-                    
-                    
-                
-                
-            
-  
-
+ 
         print(phone)
 
 #{ 
