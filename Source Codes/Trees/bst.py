@@ -68,6 +68,20 @@ class BST:
 		self.get_postorder(self.root)
 		print()
 
+	
+	def levelorder(self):
+		queue = [self.root]
+
+		while len(queue) > 0:
+			item = queue[0]
+			if item.left:
+				queue.append(item.left)
+			if item.right:
+				queue.append(item.right)
+
+			print(item.data, end=' ')
+			queue = queue[1:]
+		print()
 
 
 bst = BST()
@@ -83,3 +97,4 @@ bst.add(10)
 bst.preorder()
 bst.inorder()
 bst.postorder()
+bst.levelorder()
