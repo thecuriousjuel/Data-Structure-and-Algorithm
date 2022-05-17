@@ -200,7 +200,6 @@ class BST:
 				
 
 	def search_data_helper(self, root, search_data):
-		# print(root.data, search_data)
 		if root.data == search_data:
 			return 'Found!'
 		if root.left != None:
@@ -232,7 +231,7 @@ class BST:
 		if item.right:
 			node = self.get_inorder_predecessor_helper(item.left)
 			return node
-		return item
+		# return item
 
 
 	# Using BFS Traversal
@@ -256,50 +255,45 @@ class BST:
 
 
 	def delete_node_helper(self, root, data):
-		if root.left:
-			if root.left.data == data:
+		if root:
+			if root.data == data:
 				return root
 			f = self.delete_node_helper(root.left, data)
 			if f:
 				return f
 
-
-		if root.right:
-			if root.right.data == data:
+		if root:
+			if root.data == data:
 				return root
 			f = self.delete_node_helper(root.right, data)
 			if f:
 				return f
 
-
+	# Not completed
 	def delete_node(self, data):
 		f = self.delete_node_helper(self.root, data)
 		if f:
-			print(f.data)
-
-			if f.left.data == data:
-				pred = self.get_inorder_predecessor(f.left)
-				print(pred.data)
-
-				# print(f.left.data)
-
-				f.left.data = pred.data
-				del pred
-
-				print("Node Deleted!")
+			# case 1: Node has no child
+			if f.left == None and f.right == None:
+				f = None
 				
+			# case 2: Node has one child
+			elif f.left != None and f.right == None:
+				f = f.left
+				f.left = None
+			
+			elif f.left == None and f.right != None:
+				f = f.right
+				f.right = None
 
-			if f.right.data == data:
-				pred = self.get_inorder_predecessor(f.right)
-				# print(pred.data)
+			# case 3: Node has two children
+			else:
+				pred = self.get_inorder_predecessor(f)
+				pred = None
+				f.data = pred.data
+				# pred = None
 
-				# print(f.left.data)
 
-				f.right.data = pred.data
-				del pred
-
-				print("Node Deleted!")
-				
 		else:
 			print('Not Found!')
 
