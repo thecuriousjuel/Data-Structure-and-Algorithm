@@ -1,6 +1,4 @@
-from inspect import stack
-from queue import Queue
-import queue
+from requests import delete
 
 
 class Node:
@@ -202,21 +200,109 @@ class BST:
 				
 
 	def search_data_helper(self, root, search_data):
-		print(root.data, search_data)
+		# print(root.data, search_data)
 		if root.data == search_data:
 			return 'Found!'
 		if root.left != None:
-			return self.search_data_helper(root.left, search_data)
+			f = self.search_data_helper(root.left, search_data)
+			if f:
+				return f
 		if root.right != None:
-			return self.search_data_helper(root.right, search_data)
-
-		return 'Not Found'
+			f = self.search_data_helper(root.right, search_data)
+			if f:
+				return f
 
 
 	def search_element(self, search_data):
 		output = self.search_data_helper(self.root, search_data)
+		if output:
+			print(output)
+		else:
+			print('Not Found!')
 
-		print(search_data, output)
+
+
+	def get_inorder_predecessor_helper(self, root):
+		if root.right != None:
+			return self.get_inorder_predecessor_helper(root.right)
+		return root
+
+
+	def get_inorder_predecessor(self, item):
+		if item.right:
+			node = self.get_inorder_predecessor_helper(item.left)
+			return node
+		return item
+
+
+	# Using BFS Traversal
+	def search_element_iteration(self, data):
+		queue = [self.root]
+		while len(queue) > 0:
+			item = queue[0]
+
+			if item.data == data:
+				print('Found!')
+				return
+
+			if item.left:
+				queue.append(item.left)
+			if item.right:
+				queue.append(item.right)
+
+			queue = queue[1:]
+
+		print('Not Found!')
+
+
+	def delete_node_helper(self, root, data):
+		if root.left:
+			if root.left.data == data:
+				return root
+			f = self.delete_node_helper(root.left, data)
+			if f:
+				return f
+
+
+		if root.right:
+			if root.right.data == data:
+				return root
+			f = self.delete_node_helper(root.right, data)
+			if f:
+				return f
+
+
+	def delete_node(self, data):
+		f = self.delete_node_helper(self.root, data)
+		if f:
+			print(f.data)
+
+			if f.left.data == data:
+				pred = self.get_inorder_predecessor(f.left)
+				print(pred.data)
+
+				# print(f.left.data)
+
+				f.left.data = pred.data
+				del pred
+
+				print("Node Deleted!")
+				
+
+			if f.right.data == data:
+				pred = self.get_inorder_predecessor(f.right)
+				# print(pred.data)
+
+				# print(f.left.data)
+
+				f.right.data = pred.data
+				del pred
+
+				print("Node Deleted!")
+				
+		else:
+			print('Not Found!')
+
 
 		
 
@@ -264,4 +350,18 @@ bst.deepest_node()
 bst.no_of_leaves()
 # bst.reverse_bst()
 bst.get_maximum()
-bst.search_element(13)
+
+search_num = 5
+print(f'Searching for {search_num} ->', end = ' ')
+bst.search_element(search_num)
+
+# bst.get_inorder_predecessor()
+
+search_num = 147
+print(f'Searching for {search_num} using iteration ->', end = ' ')
+bst.search_element_iteration(search_num)
+
+bst.delete_node(14)
+
+print('InOrder -> ',  end='')
+bst.inorder()
