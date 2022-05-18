@@ -1,6 +1,3 @@
-from requests import delete
-
-
 class Node:
 	def __init__(self, data):
 		self.data = data
@@ -226,12 +223,10 @@ class BST:
 			return self.get_inorder_predecessor_helper(root.right)
 		return root
 
-
 	def get_inorder_predecessor(self, item):
 		if item.right:
 			node = self.get_inorder_predecessor_helper(item.left)
 			return node
-		# return item
 
 
 	# Using BFS Traversal
@@ -242,7 +237,7 @@ class BST:
 
 			if item.data == data:
 				print('Found!')
-				return
+				return item
 
 			if item.left:
 				queue.append(item.left)
@@ -252,53 +247,96 @@ class BST:
 			queue = queue[1:]
 
 		print('Not Found!')
+		return
 
 
 	def delete_node_helper(self, root, data):
-		if root:
-			if root.data == data:
+		if root.left:
+			if root.left.data == data:
 				return root
 			f = self.delete_node_helper(root.left, data)
+
 			if f:
 				return f
 
-		if root:
-			if root.data == data:
+		if root.right:
+			if root.right.data == data:
 				return root
 			f = self.delete_node_helper(root.right, data)
+
 			if f:
 				return f
 
-	# Not completed
+	# Completed
 	def delete_node(self, data):
-		f = self.delete_node_helper(self.root, data)
-		if f:
-			# case 1: Node has no child
-			if f.left == None and f.right == None:
-				f = None
-				
-			# case 2: Node has one child
-			elif f.left != None and f.right == None:
-				f = f.left
-				f.left = None
-			
-			elif f.left == None and f.right != None:
-				f = f.right
-				f.right = None
+		if self.root == None:
+			print('Tree not present')
+			return
 
-			# case 3: Node has two children
-			else:
-				pred = self.get_inorder_predecessor(f)
-				pred = None
-				f.data = pred.data
-				# pred = None
+		if self.root.data == data:
+			print('Found')
+			self.root = None
+			return
+
+		
+		parent = self.delete_node_helper(self.root, data)
+		if parent:
+			# print(parent.data)
+
+			if parent.left != None and parent.left.data == data:
+				# print('Deleted child on left')
+				delete_child = parent.left
+
+				# case 1: Node has no child
+				if delete_child.left == None and delete_child.right == None:
+					# print('Case 1')
+					parent.left = None
+
+				# case 2: Node has one child
+				if delete_child.left == None or delete_child.right == None:
+					# print('Case 2')
+					parent.left = delete_child.left
+					parent.left = delete_child.right
+
+				# case 3: Node has two children
+				if delete_child.left != None and delete_child.right != None:
+					# print('Case 3')
+					pred = self.get_inorder_predecessor(delete_child)
+					print(pred.data)
+					temp = pred.data
+					self.delete_node(pred.data)
+					delete_child.data = temp
+
+
+			elif parent.right != None and parent.right.data == data:
+				# print('Deleted child on right')
+
+				delete_child = parent.right
+
+				# case 1: Node has no child
+				if delete_child.left == None and delete_child.right == None:
+					# print('Case 1')
+					parent.right = None
+
+				# case 2: Node has one child
+				if delete_child.left == None or delete_child.right == None:
+					# print('Case 2')
+					parent.right = delete_child.left
+					parent.right = delete_child.right
+
+				# case 3: Node has two children
+				if delete_child.left != None and delete_child.right != None:
+					# print('Case 3')
+					pred = self.get_inorder_predecessor(delete_child)
+					temp = pred.data
+					self.delete_node(pred.data)
+					delete_child.data = temp
+			
 
 
 		else:
 			print('Not Found!')
 
-
-		
 
 
 bst = BST()
@@ -355,7 +393,44 @@ search_num = 147
 print(f'Searching for {search_num} using iteration ->', end = ' ')
 bst.search_element_iteration(search_num)
 
-bst.delete_node(14)
+num = 16
+bst.delete_node(num)
+print(f'Deleting {num}')
+print('InOrder -> ',  end='')
+bst.inorder()
 
+num = 12
+bst.delete_node(num)
+print(f'Deleting {num}')
+print('InOrder -> ',  end='')
+bst.inorder()
+
+num = 14
+bst.delete_node(num)
+print(f'Deleting {num}')
+print('InOrder -> ',  end='')
+bst.inorder()
+
+num = 4
+bst.delete_node(num)
+print(f'Deleting {num}')
+print('InOrder -> ',  end='')
+bst.inorder()
+
+num = 7
+bst.delete_node(num)
+print(f'Deleting {num}')
+print('InOrder -> ',  end='')
+bst.inorder()
+
+num = 71
+bst.delete_node(num)
+print(f'Deleting {num}')
+print('InOrder -> ',  end='')
+bst.inorder()
+
+num = 0
+bst.delete_node(num)
+print(f'Deleting {num}')
 print('InOrder -> ',  end='')
 bst.inorder()
