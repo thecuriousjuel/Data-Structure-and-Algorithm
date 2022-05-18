@@ -331,12 +331,40 @@ class BST:
 					temp = pred.data
 					self.delete_node(pred.data)
 					delete_child.data = temp
-			
-
-
 		else:
 			print('Not Found!')
 
+
+	def delete_node_bst(self, this_node, key):
+		if this_node == None:
+			return this_node
+
+		if key < this_node.data:
+			this_node.left = self.delete_node_bst(this_node.left, key)
+
+		elif key > this_node.data:
+			this_node.right = self.delete_node_bst(this_node.right, key)
+
+		else:
+			# print(this_node.data)
+			# case 1 : check for no or one child
+			if this_node.left == None:
+				temp = this_node.right
+				this_node = None
+				return temp
+
+			elif this_node.right == None:
+				temp = this_node.left
+				this_node = None
+				return temp
+
+			# case 2: check for two children
+			pred = self.get_inorder_predecessor(this_node)
+			this_node.data = pred.data
+			this_node.left = self.delete_node_bst(this_node.left, pred.data)
+
+
+		return this_node
 
 
 bst = BST()
@@ -393,44 +421,87 @@ search_num = 147
 print(f'Searching for {search_num} using iteration ->', end = ' ')
 bst.search_element_iteration(search_num)
 
-num = 16
-bst.delete_node(num)
-print(f'Deleting {num}')
-print('InOrder -> ',  end='')
-bst.inorder()
+# num = 13
+# bst.delete_node(num)
+# print(f'Deleting {num}')
+# print('InOrder -> ',  end='')
+# bst.inorder()
 
-num = 12
-bst.delete_node(num)
-print(f'Deleting {num}')
-print('InOrder -> ',  end='')
-bst.inorder()
+# num = 14
+# bst.delete_node(num)
+# print(f'Deleting {num}')
+# print('InOrder -> ',  end='')
+# bst.inorder()
+
+# num = 12
+# bst.delete_node(num)
+# print(f'Deleting {num}')
+# print('InOrder -> ',  end='')
+# bst.inorder()
+
+# num = 13
+# bst.delete_node(num)
+# print(f'Deleting {num}')
+# print('InOrder -> ',  end='')
+# bst.inorder()
+
+# num = 4
+# bst.delete_node(num)
+# print(f'Deleting {num}')
+# print('InOrder -> ',  end='')
+# bst.inorder()
+
+# num = 7
+# bst.delete_node(num)
+# print(f'Deleting {num}')
+# print('InOrder -> ',  end='')
+# bst.inorder()
+
+# num = 71
+# bst.delete_node(num)
+# print(f'Deleting {num}')
+# print('InOrder -> ',  end='')
+# bst.inorder()
+
+# num = 0
+# bst.delete_node(num)
+# print(f'Deleting {num}')
+# print('InOrder -> ',  end='')
+# bst.inorder()
+
 
 num = 14
-bst.delete_node(num)
+bst.delete_node_bst(bst.root, num)
 print(f'Deleting {num}')
 print('InOrder -> ',  end='')
 bst.inorder()
 
-num = 4
-bst.delete_node(num)
+num = 13
+bst.delete_node_bst(bst.root, num)
 print(f'Deleting {num}')
 print('InOrder -> ',  end='')
 bst.inorder()
 
-num = 7
-bst.delete_node(num)
+num = 5
+bst.delete_node_bst(bst.root, num)
 print(f'Deleting {num}')
 print('InOrder -> ',  end='')
 bst.inorder()
 
-num = 71
-bst.delete_node(num)
+num = 10
+bst.delete_node_bst(bst.root, num)
 print(f'Deleting {num}')
 print('InOrder -> ',  end='')
 bst.inorder()
 
-num = 0
-bst.delete_node(num)
+num = 3
+bst.delete_node_bst(bst.root, num)
+print(f'Deleting {num}')
+print('InOrder -> ',  end='')
+bst.inorder()
+
+num = 16
+bst.delete_node_bst(bst.root, num)
 print(f'Deleting {num}')
 print('InOrder -> ',  end='')
 bst.inorder()
