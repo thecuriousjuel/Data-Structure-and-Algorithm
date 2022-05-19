@@ -54,6 +54,27 @@ class Graph:
                 self.dfs(self.node_list[index])
 
 
+    def bfs(self, root):
+        queue = [root]
+        temp = [root]
+
+        while len(queue) > 0:
+            index = self.node_list.index(queue[0])
+            self.visited[index] = True
+
+            for j in range(len(self.graph[index])):
+                if self.graph[index][j] == 1 and self.visited[j] == False:
+                    queue.append(self.node_list[j])
+                    temp.append(self.node_list[j])
+                    self.visited[j] = True
+            
+            queue = queue[1:]
+
+        for i in temp:
+            print(i, end = ' ')
+        print()
+
+
     def display(self):
         # print(self.graph)
         print('-' * 100)
@@ -91,7 +112,15 @@ g.add_edge('E', 'H')
 
 g.display()
 
-# print(g.graph)
-
+print('DFS -> ', end = ' ')
 g.dfs(g.node_list[0])
-# print(g.node_data)
+print()
+
+g.visited = [False for i in range(len(g.visited))]
+
+print('BFS -> ', end = ' ')
+g.bfs(g.node_list[0])
+print()
+
+
+
