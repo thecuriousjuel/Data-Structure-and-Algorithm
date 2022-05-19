@@ -10,7 +10,7 @@ class Graph:
             print('Node is present!')
             return
 
-        self.node_data[node] = True
+        self.node_data[node] = False
 
         for i in self.graph:
             i.append(0)

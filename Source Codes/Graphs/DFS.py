@@ -1,24 +1,21 @@
 from Graph_Adjacency_Matrix import Graph
 
+def dfs_helper(current_node):
 
 
-def dfs_helper(root):
+# g.node_data
+
+
+def dfs(root):
     # case 1: If there is a dead end
     # case 2: If the node is already visited
     # case 3: If there are many unvisited nodes
     # case 4: If there are many visited nodes
 
-    print(root)
+    for node in range(len(root)):
+        for current in range(len(node)):
+            if g.node_data == 
     
-
-    
-    
-    
-    
-    pass
-
-def dfs():
-    self.dfs_helper(self.graph)
 
 
 
@@ -43,4 +40,5 @@ g.add_edge('E', 'H')
 
 g.display()
 
-g.dfs()
+dfs(g.graph)
+print(g.node_data)
