@@ -58,6 +58,14 @@ class Graph:
         self.graph[v2_index][v1_index] = 0
 
         print(f'Edge removed! {v1} -- {v2}')
+
+
+    def search(self, node):
+        if node in self.node_list:
+            print('Node is present!')
+            return
+
+        print('Node is not present!')
         
 
     def display(self):
@@ -115,3 +123,5 @@ g.display()
 
 g.delete_node('C')
 g.display()
+
+g.search('B')
