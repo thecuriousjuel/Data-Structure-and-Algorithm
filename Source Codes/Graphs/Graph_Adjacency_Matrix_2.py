@@ -82,7 +82,6 @@ class Graph:
             print(row)
 
 
-
 if __name__ == '__main__':
     G = Graph(5)
 
