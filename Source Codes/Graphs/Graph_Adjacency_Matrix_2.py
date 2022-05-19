@@ -100,5 +100,5 @@ if __name__ == '__main__':
     G.addEdge('b', 'e', 40)
     G.addEdge('e', 'd', 50)
     G.addEdge('f', 'e', 60)
-    print(G.printMatrix())
+    G.printMatrix()
     print(G.getEdges())
