@@ -38,38 +38,36 @@ class Graph:
         self.graph[v1_index][v2_index] = w
         print(f'Edge added! {v1} -- {v2}')
 
+#   node_list = [A B C D E F]
+
+#   self.graph = [[0 0 0 0 0 1],
+#                 [1 1 0 0 1 0]]
+
+#   visted = []
+
+#   cost = []
+
 
     def dijkstras(self):
-        queue = [self.node_list[0]]
-        
         cost = [float('inf')] * len(self.node_list)
+        cost[0] = 0
+        visited = []
 
-        current = queue[0]
-        node_index = self.node_list.index(current)
+        while len(visited) < len(self.node_list):
+            print(cost, visited)
+            min_weight = min(cost)
 
-        cost[node_index] = 0
-        self.visited[node_index] = True
+            index_with_min_weight = cost.index(min_weight)
 
-        print([i for i in self.node_list])
+            for i in range(len(self.graph[index_with_min_weight])):
+                if self.graph[index_with_min_weight][i] > 0:
+                    # print(f'Node value -> {cost[index_with_min_weight] + self.graph[index_with_min_weight][i]}, Current Value -> {cost[i]}')
+                    cost[i] = min(cost[index_with_min_weight] + self.graph[index_with_min_weight][i], cost[i])
 
-        j=1
+            visited.append(self.node_list[index_with_min_weight])
 
-        while len(queue) > 0:
-            print(cost)
-            # print(self.visited)
+            # cost.pop(index_with_min_weight)
 
-            node_index = self.node_list.index(current)
-
-            for i in range(len(self.graph[node_index])):
-                if self.graph[node_index][i] > 0 and self.visited[i] == False:
-                    print(self.graph[node_index][i] + cost[node_index], cost[i])
-                    cost[i] = min(self.graph[node_index][i] + cost[node_index], cost[i])
-                    # print(self.node_list[i])
-                    queue.append(self.node_list[i])
-                    self.visited[i] = True
-
-            # j+=1
-            queue = queue[1:]
         print()
 
 
@@ -87,7 +85,6 @@ class Graph:
                 print(self.graph[i][j], end = '\t')
             print()
         print('-' * 100)
-
 
 
 
@@ -116,6 +113,7 @@ class Graph:
 # g.dijkstras()
 
 # --------------------------------------------------------
+
 g = Graph()
 g.add_node('A')
 g.add_node('B')
