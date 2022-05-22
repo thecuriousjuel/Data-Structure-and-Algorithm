@@ -61,7 +61,7 @@ class Graph:
             index_with_min_weight = cost.index(min_weight)
 
             for i in range(len(self.graph[index_with_min_weight])):
-                if self.graph[index_with_min_weight][i] > 0:
+                if self.graph[index_with_min_weight][i] != 0:
                     cost[i] = min(cost[index_with_min_weight] + self.graph[index_with_min_weight][i], cost[i])
 
             visited.append(self.node_list[index_with_min_weight])
@@ -74,7 +74,17 @@ class Graph:
                     if cost[i] < min_weight:
                         min_weight = cost[i]
 
-        print(cost)
+        print(f'Starting point -> {self.node_list[start]}')
+        print('Shortest Distance')
+        print(end='\t')
+        for i in self.node_list:
+            print(i, end= '\t')
+        print()
+        
+        print(self.node_list[start], end='\t')
+        for i in cost:
+            print(i, end= '\t')
+        print()
 
 
     def display(self):
@@ -141,29 +151,29 @@ class Graph:
 
 # --------------------------------------------------------
 
-g = Graph()
-g.add_node('A')
-g.add_node('B')
-g.add_node('C')
-g.add_node('D')
-g.add_node('E')
-g.add_node('F')
+# g = Graph()
+# g.add_node('A')
+# g.add_node('B')
+# g.add_node('C')
+# g.add_node('D')
+# g.add_node('E')
+# g.add_node('F')
 
-g.add_edge('A', 'B', 50)
-g.add_edge('A', 'C', 45)
-g.add_edge('A', 'D', 10)
-g.add_edge('B', 'C', 10)
-g.add_edge('B', 'D', 15)
-g.add_edge('C', 'E', 30)
-g.add_edge('D', 'A', 10)
-g.add_edge('D', 'E', 15)
-g.add_edge('E', 'B', 20)
-g.add_edge('E', 'C', 35)
-g.add_edge('F', 'E', 3)
+# g.add_edge('A', 'B', 50)
+# g.add_edge('A', 'C', 45)
+# g.add_edge('A', 'D', 10)
+# g.add_edge('B', 'C', 10)
+# g.add_edge('B', 'D', 15)
+# g.add_edge('C', 'E', 30)
+# g.add_edge('D', 'A', 10)
+# g.add_edge('D', 'E', 15)
+# g.add_edge('E', 'B', 20)
+# g.add_edge('E', 'C', 35)
+# g.add_edge('F', 'E', 3)
 
-g.display()
+# g.display()
 
-g.dijkstras(start = 1)
+# g.dijkstras(start = 1)
 
 # --------------------------------------------------------
 
@@ -189,19 +199,19 @@ g.dijkstras(start = 1)
 # g.dijkstras()
 
 # --------------------------------------------------------
-# g = Graph()
-# g.add_node('A')
-# g.add_node('B')
-# g.add_node('C')
-# g.add_node('D')
+g = Graph()
+g.add_node('A')
+g.add_node('B')
+g.add_node('C')
+g.add_node('D')
 
-# g.add_edge('A', 'B', 3)
-# # g.add_edge('A', 'C', 8)
-# g.add_edge('A', 'D', 5)
-# g.add_edge('C', 'B', 3)
-# g.add_edge('D', 'C', 2)
+g.add_edge('A', 'B', 3)
+# g.add_edge('A', 'C', 8)
+g.add_edge('A', 'D', 5)
+g.add_edge('C', 'B', -10)
+g.add_edge('D', 'C', 2)
 
-# g.display()
+g.display()
 
-# g.dijkstras()
+g.dijkstras(start=0)
 # --------------------------------------------------------
