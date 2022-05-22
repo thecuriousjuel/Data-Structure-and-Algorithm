@@ -39,33 +39,14 @@ class Graph:
 
         print(f'Edge added! {v1} -- {v2}')
 
-#   node_list = [A B C D E F]
-
-#   self.graph = [[0 0 0 0 0 1],
-#                 [1 1 0 0 1 0]]
-
-#   visted = []
-
-#   cost = []
-
 
     def dijkstras(self, start = 0):
         cost = [float('inf')] * len(self.node_list)
         cost[start] = 0
         visited = []
 
-        min_weight = min(cost)
-
         while len(visited) < len(self.node_list):
-
-            index_with_min_weight = cost.index(min_weight)
-
-            for i in range(len(self.graph[index_with_min_weight])):
-                if self.graph[index_with_min_weight][i] != 0:
-                    cost[i] = min(cost[index_with_min_weight] + self.graph[index_with_min_weight][i], cost[i])
-
-            visited.append(self.node_list[index_with_min_weight])
-
+            print(cost, visited)
             min_weight = float('inf')    
             for i in range(len(cost)):
                 if self.node_list[i] in visited:
@@ -73,6 +54,19 @@ class Graph:
                 else:
                     if cost[i] < min_weight:
                         min_weight = cost[i]
+                        index_with_min_weight = i
+
+            for i in range(len(self.graph[index_with_min_weight])):
+
+                # Put this condition to handle negative values.
+                # if self.graph[index_with_min_weight][i] != 0:
+                #     cost[i] = min(cost[index_with_min_weight] + self.graph[index_with_min_weight][i], cost[i])
+               
+                if self.graph[index_with_min_weight][i] != 0 and self.node_list[i] not in visited:
+                    cost[i] = min(cost[index_with_min_weight] + self.graph[index_with_min_weight][i], cost[i])
+
+            visited.append(self.node_list[index_with_min_weight])
+
 
         print(f'Starting point -> {self.node_list[start]}')
         print('Shortest Distance')
@@ -105,48 +99,48 @@ class Graph:
 
 # Undirected example
 
-# g = Graph()
-# g.add_node('0')
-# g.add_node('1')
-# g.add_node('2')
-# g.add_node('3')
-# g.add_node('4')
-# g.add_node('5')
-# g.add_node('6')
-# g.add_node('7')
-# g.add_node('8')
+g = Graph()
+g.add_node('0')
+g.add_node('1')
+g.add_node('2')
+g.add_node('3')
+g.add_node('4')
+g.add_node('5')
+g.add_node('6')
+g.add_node('7')
+g.add_node('8')
 
-# g.add_edge('0', '1', 4)
-# g.add_edge('0', '7', 8)
-# g.add_edge('1', '0', 4)
-# g.add_edge('1', '2', 8)
-# g.add_edge('1', '7', 11)
-# g.add_edge('2', '1', 8)
-# g.add_edge('2', '3', 7)
-# g.add_edge('2', '5', 4)
-# g.add_edge('2', '8', 2)
-# g.add_edge('3', '2', 7)
-# g.add_edge('3', '4', 9)
-# g.add_edge('3', '5', 14)
-# g.add_edge('4', '3', 9)
-# g.add_edge('4', '5', 10)
-# g.add_edge('5', '2', 4)
-# g.add_edge('5', '3', 14)
-# g.add_edge('5', '4', 10)
-# g.add_edge('6', '5', 2)
-# g.add_edge('6', '8', 6)
-# g.add_edge('6', '7', 1)
-# g.add_edge('7', '0', 8)
-# g.add_edge('7', '1', 11)
-# g.add_edge('7', '8', 7)
-# g.add_edge('7', '6', 1)
-# g.add_edge('8', '2', 2)
-# g.add_edge('8', '6', 6)
-# g.add_edge('8', '7', 7)
+g.add_edge('0', '1', 4)
+g.add_edge('0', '7', 8)
+g.add_edge('1', '0', 4)
+g.add_edge('1', '2', 8)
+g.add_edge('1', '7', 11)
+g.add_edge('2', '1', 8)
+g.add_edge('2', '3', 7)
+g.add_edge('2', '5', 4)
+g.add_edge('2', '8', 2)
+g.add_edge('3', '2', 7)
+g.add_edge('3', '4', 9)
+g.add_edge('3', '5', 14)
+g.add_edge('4', '3', 9)
+g.add_edge('4', '5', 10)
+g.add_edge('5', '2', 4)
+g.add_edge('5', '3', 14)
+g.add_edge('5', '4', 10)
+g.add_edge('6', '5', 2)
+g.add_edge('6', '8', 6)
+g.add_edge('6', '7', 1)
+g.add_edge('7', '0', 8)
+g.add_edge('7', '1', 11)
+g.add_edge('7', '8', 7)
+g.add_edge('7', '6', 1)
+g.add_edge('8', '2', 2)
+g.add_edge('8', '6', 6)
+g.add_edge('8', '7', 7)
 
-# g.display()
+g.display()
 
-# g.dijkstras()
+g.dijkstras()
 
 
 # --------------------------------------------------------
@@ -173,7 +167,7 @@ class Graph:
 
 # g.display()
 
-# g.dijkstras(start = 1)
+# g.dijkstras()
 
 # --------------------------------------------------------
 
@@ -199,19 +193,18 @@ class Graph:
 # g.dijkstras()
 
 # --------------------------------------------------------
-g = Graph()
-g.add_node('A')
-g.add_node('B')
-g.add_node('C')
-g.add_node('D')
+# g = Graph()
+# g.add_node('A')
+# g.add_node('B')
+# g.add_node('C')
+# g.add_node('D')
 
-g.add_edge('A', 'B', 3)
-# g.add_edge('A', 'C', 8)
-g.add_edge('A', 'D', 5)
-g.add_edge('C', 'B', -10)
-g.add_edge('D', 'C', 2)
+# g.add_edge('A', 'B', 3)
+# g.add_edge('A', 'D', 5)
+# g.add_edge('C', 'B', -3)
+# g.add_edge('D', 'C', 2)
 
-g.display()
+# g.display()
 
-g.dijkstras(start=0)
+# g.dijkstras(start=0)
 # --------------------------------------------------------
