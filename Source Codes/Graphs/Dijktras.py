@@ -47,24 +47,29 @@ class Graph:
 
         current = queue[0]
         node_index = self.node_list.index(current)
+
         cost[node_index] = 0
         self.visited[node_index] = True
 
         print([i for i in self.node_list])
 
+        j=1
+
         while len(queue) > 0:
             print(cost)
-            
-            current = queue[0]
+
             node_index = self.node_list.index(current)
 
             for i in range(len(self.graph[node_index])):
+                # print(self.graph[node_index][i], self.visited[i])
                 if self.graph[node_index][i] > 0 and self.visited[i] == False:
+                    print(self.graph[node_index][i] + cost[node_index], cost[i])
                     cost[i] = min(self.graph[node_index][i] + cost[node_index], cost[i])
-                    queue.append(self.node_list[i])
 
+                    queue.append(self.node_list[i])
                     self.visited[i] = True
 
+            # j+=1
             queue = queue[1:]
             
         print()
