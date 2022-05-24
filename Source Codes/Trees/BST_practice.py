@@ -166,6 +166,34 @@ class Tree:
         return max(self.height(root.left), self.height(root.right)) + 1
 
 
+    def get_element_level(self, element):
+        queue = [(self.root, 0)]
+
+        while len(queue) > 0:
+
+            for i in queue:
+                print(i[0].data, i[1])
+
+            temp = queue[0]
+
+            if temp[0].data == element:
+                return temp[1]
+
+            if temp[0].left != None:
+                l = temp[1] + 1
+                queue.append((temp[0].left, l))
+
+            if temp[0].right != None:
+                l = temp[1] + 1
+
+                queue.append((temp[0].right, l))
+            
+            queue = queue[1:]
+
+        return 'Not Found!'
+
+            
+
 t = Tree()
 t.insert(50)
 t.insert(20)
@@ -173,6 +201,12 @@ t.insert(15)
 t.insert(70)
 t.insert(35)
 t.insert(10)
+t.insert(100)
+t.insert(65)
+t.insert(45)
+t.insert(5)
+t.insert(46)
+t.insert(47)
 
 print('Inorder Traversal : ', end = ' ')
 t.inorder(t.root)
@@ -190,13 +224,13 @@ print('Levelorder Traversal : ', end = ' ')
 t.levelorder(t.root)
 print()
 
-# t.search_iter(t.root, 35)
 
 num = 70
 if t.search_recur(t.root, num) == 1:
     print(f'Found {num}')
 else:
     print(f'Not Found {num}')
+
 
 num = 50
 size = t.size
@@ -210,110 +244,5 @@ print('Inorder :', end = ' ')
 t.inorder(t.root)
 print()
 
-print('Height : ', t.height(t.root))
-
-# num = 70
-# size = t.size
-# t.root = t.deletion(t.root, num)
-# if size == t.size:
-#     print(f'Not Deleted! {num}')
-# else:
-#     print(f'Deleted! {num}')
-
-# print('Inorder :', end = ' ')
-# t.inorder(t.root)
-# print()
-# num = 20
-# size = t.size
-# t.root = t.deletion(t.root, num)
-# if size == t.size:
-#     print(f'Not Deleted! {num}')
-# else:
-#     print(f'Deleted! {num}')
-
-# print('Inorder :', end = ' ')
-# t.inorder(t.root)
-# print()
-# num = 30
-# size = t.size
-# t.root = t.deletion(t.root, num)
-# if size == t.size:
-#     print(f'Not Deleted! {num}')
-# else:
-#     print(f'Deleted! {num}')
-
-# print('Inorder :', end = ' ')
-# t.inorder(t.root)
-# print()
-# num = 35
-# size = t.size
-# t.root = t.deletion(t.root, num)
-# if size == t.size:
-#     print(f'Not Deleted! {num}')
-# else:
-#     print(f'Deleted! {num}')
-
-# print('Inorder :', end = ' ')
-# t.inorder(t.root)
-# print()
-# num = 12
-# size = t.size
-# t.root = t.deletion(t.root, num)
-# if size == t.size:
-#     print(f'Not Deleted! {num}')
-# else:
-#     print(f'Deleted! {num}')
-
-# print('Inorder :', end = ' ')
-# t.inorder(t.root)
-# print()
-# num = 10
-# size = t.size
-# t.root = t.deletion(t.root, num)
-# if size == t.size:
-#     print(f'Not Deleted! {num}')
-# else:
-#     print(f'Deleted! {num}')
-
-# print('Inorder :', end = ' ')
-# t.inorder(t.root)
-# print()
-# num = 15
-# size = t.size
-# t.root = t.deletion(t.root, num)
-# if size == t.size:
-#     print(f'Not Deleted! {num}')
-# else:
-#     print(f'Deleted! {num}')
-
-# print('Inorder :', end = ' ')
-# t.inorder(t.root)
-# print()
-
-
-# num = 15
-# size = t.size
-# t.root = t.deletion(t.root, num)
-# if size == t.size:
-#     print(f'Not Deleted! {num}')
-# else:
-#     print(f'Deleted! {num}')
-
-# print('Inorder :', end = ' ')
-# t.inorder(t.root)
-# print()
-
-# num = 19
-# size = t.size
-# t.root = t.deletion(t.root, num)
-# if size == t.size:
-#     print(f'Not Deleted! {num}')
-# else:
-#     print(f'Deleted! {num}')
-
-# print('Inorder :', end = ' ')
-# t.inorder(t.root)
-# print()
-
-
-
+# print('Height : ', t.height(t.root))
+# print('Level : ', t.get_element_level(100))
