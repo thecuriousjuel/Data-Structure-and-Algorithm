@@ -232,7 +232,7 @@ else:
     print(f'Not Found {num}')
 
 
-num = 50
+num = 35
 size = t.size
 t.root = t.deletion(t.root, num)
 if size == t.size:
