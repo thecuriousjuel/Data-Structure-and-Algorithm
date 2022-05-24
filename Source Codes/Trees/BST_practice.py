@@ -1,4 +1,16 @@
-from sympy import roots
+"""
+Functions:
+    1. insert
+    2. insert_helper
+    3. inorder
+    4. preorder
+    5. postorder
+    6. levelorder
+    7. search_iter : search using iteration
+    8. search_recure : search using recursion
+    9. deletion
+    10. height
+"""
 
 
 class Node:
@@ -148,6 +160,12 @@ class Tree:
         return root
 
 
+    def height(self, root):
+        if root == None:
+            return 0
+        return max(self.height(root.left), self.height(root.right)) + 1
+
+
 t = Tree()
 t.insert(50)
 t.insert(20)
@@ -191,6 +209,8 @@ else:
 print('Inorder :', end = ' ')
 t.inorder(t.root)
 print()
+
+print('Height : ', t.height(t.root))
 
 # num = 70
 # size = t.size
