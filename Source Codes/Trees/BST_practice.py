@@ -10,6 +10,7 @@ Functions:
     8. search_recure : search using recursion
     9. deletion
     10. height
+    11. get_element_level : To get the level of an element
 """
 
 
@@ -116,7 +117,7 @@ class Tree:
                 return 1
 
     def inorder_successor(self, root):
-        
+        temp = root.data
         if root.right == None:
             print('No inorder successor')
             return
@@ -125,7 +126,7 @@ class Tree:
         while root.left:
             root = root.left
         
-        print('Inorder successor -> ', root.data)
+        print(f'Inorder successor of {temp} -> {root.data}')
         return root
 
 
@@ -155,7 +156,7 @@ class Tree:
                     self.size -= 1
                     in_succ = self.inorder_successor(root)
                     root.data = in_succ.data
-                    root.right = self.deletion(in_succ, in_succ.data)
+                    root.right = self.deletion(root.right, in_succ.data)
 
         return root
 
@@ -170,9 +171,6 @@ class Tree:
         queue = [(self.root, 0)]
 
         while len(queue) > 0:
-
-            for i in queue:
-                print(i[0].data, i[1])
 
             temp = queue[0]
 
@@ -192,7 +190,6 @@ class Tree:
 
         return 'Not Found!'
 
-            
 
 t = Tree()
 t.insert(50)
@@ -232,7 +229,7 @@ else:
     print(f'Not Found {num}')
 
 
-num = 35
+num = 46
 size = t.size
 t.root = t.deletion(t.root, num)
 if size == t.size:
@@ -244,5 +241,7 @@ print('Inorder :', end = ' ')
 t.inorder(t.root)
 print()
 
-# print('Height : ', t.height(t.root))
-# print('Level : ', t.get_element_level(100))
+print('Height of tree : ', t.height(t.root))
+
+num = 46
+print(f'Level of {num} : {t.get_element_level(num)}')
