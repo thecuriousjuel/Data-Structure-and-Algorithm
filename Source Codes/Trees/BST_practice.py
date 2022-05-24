@@ -7,6 +7,7 @@ class Node:
 class Tree:
     def __init__(self):
         self.root = None
+        self.size = 0
 
     def insert_helper(self, root, new_node):
         if new_node.data < root.data:
@@ -28,6 +29,8 @@ class Tree:
             self.root = new_node
         else:
             self.insert_helper(self.root, new_node)
+
+        self.size += 1
 
     
     def inorder(self, root):
@@ -79,6 +82,19 @@ class Tree:
             else:
                 return 1
 
+    def inorder_successor(self, root):
+        
+        if root.right == None:
+            print('No inorder successor')
+            return
+
+        root = root.right
+        while root.left:
+            root = root.left
+        
+        print('Inorder successor -> ', root.data)
+        return root
+
 
     def deletion(self, root, delete_item):
         if root !=  None:
@@ -87,8 +103,27 @@ class Tree:
             elif delete_item > root.data:
                 root.right = self.deletion(root.right, delete_item)
             else:
-                return None
-        
+                # case 1: No child
+                if root.left == None and root.right == None:
+                    self.size -= 1
+                    return None
+
+                # case 2: Atleast one child
+                if root.left != None and root.right == None:
+                    self.size -= 1
+                    return root.left
+
+                if root.left == None and root.right != None:
+                    self.size -= 1
+                    return root.right
+
+                # case 3: Two children
+                else:
+                    self.size -= 1
+                    in_succ = self.inorder_successor(root)
+                    root.data = in_succ.data
+                    root.right = self.deletion(in_succ, in_succ.data)
+
         return root
 
 
@@ -114,11 +149,126 @@ print()
 
 # t.search_iter(t.root, 35)
 
-if t.search_recur(t.root, 70) == 1:
-    print('Found')
+num = 70
+if t.search_recur(t.root, num) == 1:
+    print(f'Found {num}')
 else:
-    print('Not Found')
+    print(f'Not Found {num}')
 
-new_t = t.deletion(t.root, 15)
-t.inorder(new_t)
+num = 50
+size = t.size
+t.root = t.deletion(t.root, num)
+if size == t.size:
+    print(f'Not Deleted! {num}')
+else:
+    print(f'Deleted! {num}')
+
+print('Inorder :', end = ' ')
+t.inorder(t.root)
 print()
+
+num = 70
+size = t.size
+t.root = t.deletion(t.root, num)
+if size == t.size:
+    print(f'Not Deleted! {num}')
+else:
+    print(f'Deleted! {num}')
+
+print('Inorder :', end = ' ')
+t.inorder(t.root)
+print()
+num = 20
+size = t.size
+t.root = t.deletion(t.root, num)
+if size == t.size:
+    print(f'Not Deleted! {num}')
+else:
+    print(f'Deleted! {num}')
+
+print('Inorder :', end = ' ')
+t.inorder(t.root)
+print()
+num = 30
+size = t.size
+t.root = t.deletion(t.root, num)
+if size == t.size:
+    print(f'Not Deleted! {num}')
+else:
+    print(f'Deleted! {num}')
+
+print('Inorder :', end = ' ')
+t.inorder(t.root)
+print()
+num = 35
+size = t.size
+t.root = t.deletion(t.root, num)
+if size == t.size:
+    print(f'Not Deleted! {num}')
+else:
+    print(f'Deleted! {num}')
+
+print('Inorder :', end = ' ')
+t.inorder(t.root)
+print()
+num = 12
+size = t.size
+t.root = t.deletion(t.root, num)
+if size == t.size:
+    print(f'Not Deleted! {num}')
+else:
+    print(f'Deleted! {num}')
+
+print('Inorder :', end = ' ')
+t.inorder(t.root)
+print()
+num = 10
+size = t.size
+t.root = t.deletion(t.root, num)
+if size == t.size:
+    print(f'Not Deleted! {num}')
+else:
+    print(f'Deleted! {num}')
+
+print('Inorder :', end = ' ')
+t.inorder(t.root)
+print()
+num = 15
+size = t.size
+t.root = t.deletion(t.root, num)
+if size == t.size:
+    print(f'Not Deleted! {num}')
+else:
+    print(f'Deleted! {num}')
+
+print('Inorder :', end = ' ')
+t.inorder(t.root)
+print()
+
+
+num = 15
+size = t.size
+t.root = t.deletion(t.root, num)
+if size == t.size:
+    print(f'Not Deleted! {num}')
+else:
+    print(f'Deleted! {num}')
+
+print('Inorder :', end = ' ')
+t.inorder(t.root)
+print()
+
+num = 19
+size = t.size
+t.root = t.deletion(t.root, num)
+if size == t.size:
+    print(f'Not Deleted! {num}')
+else:
+    print(f'Deleted! {num}')
+
+print('Inorder :', end = ' ')
+t.inorder(t.root)
+print()
+
+
+
