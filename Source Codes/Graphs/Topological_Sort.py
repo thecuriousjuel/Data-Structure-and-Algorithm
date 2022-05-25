@@ -81,33 +81,33 @@ class Graph:
 
 # ----------------------------------------------------------------------------
 
-g = Graph()
-g.add_node('0')
-g.add_node('1')
-g.add_node('2')
-g.add_node('3')
-g.add_node('4')
-g.add_node('5')
-g.add_node('6')
-g.add_node('7')
+# g = Graph()
+# g.add_node('0')
+# g.add_node('1')
+# g.add_node('2')
+# g.add_node('3')
+# g.add_node('4')
+# g.add_node('5')
+# g.add_node('6')
+# g.add_node('7')
 
-g.add_edge('1', '0')
-g.add_edge('2', '1')
-g.add_edge('3', '1')
-g.add_edge('5', '2')
-g.add_edge('5', '4')
-g.add_edge('6', '4')
-g.add_edge('6', '3')
-g.add_edge('7', '5')
-g.add_edge('7', '6')
+# g.add_edge('1', '0')
+# g.add_edge('2', '1')
+# g.add_edge('3', '1')
+# g.add_edge('5', '2')
+# g.add_edge('5', '4')
+# g.add_edge('6', '4')
+# g.add_edge('6', '3')
+# g.add_edge('7', '5')
+# g.add_edge('7', '6')
 
-print('Topological Sorting -> ', end = ' ')
+# print('Topological Sorting -> ', end = ' ')
 
-# setting the starting node
-g.stack = []
-for i in range(len(g.node_list)):
-    g.dfs(g.node_list[i])
-print(g.stack)
+# # setting the starting node
+# g.stack = []
+# for i in range(len(g.node_list)):
+#     g.dfs(g.node_list[i])
+# print(g.stack)
 
 # ----------------------------------------------------------------------------
 
@@ -159,47 +159,47 @@ print(g.stack)
 
 # ----------------------------------------------------------------------------
 
-# g = Graph()
-# g.add_node('A')
-# g.add_node('B')
-# g.add_node('C')
-# g.add_node('D')
-# g.add_node('E')
-# g.add_node('F')
-# g.add_node('G')
-# g.add_node('H')
-# g.add_node('I')
-# g.add_node('J')
-# g.add_node('K')
-# g.add_node('L')
-# g.add_node('M')
+g = Graph()
+g.add_node('A')
+g.add_node('B')
+g.add_node('C')
+g.add_node('D')
+g.add_node('E')
+g.add_node('F')
+g.add_node('G')
+g.add_node('H')
+g.add_node('I')
+g.add_node('J')
+g.add_node('K')
+g.add_node('L')
+g.add_node('M')
 
-# g.add_edge('A', 'D')
-# g.add_edge('B', 'D')
-# g.add_edge('C', 'A')
-# g.add_edge('C', 'B')
-# g.add_edge('D', 'H')
-# g.add_edge('D', 'G')
-# g.add_edge('E', 'A')
-# g.add_edge('E', 'F')
-# g.add_edge('E', 'D')
-# g.add_edge('F', 'K')
-# g.add_edge('F', 'J')
-# g.add_edge('G', 'I')
-# g.add_edge('H', 'J')
-# g.add_edge('H', 'I')
-# g.add_edge('I', 'L')
-# g.add_edge('J', 'M')
-# g.add_edge('J', 'L')
-# g.add_edge('K', 'J')
+g.add_edge('A', 'D')
+g.add_edge('B', 'D')
+g.add_edge('C', 'A')
+g.add_edge('C', 'B')
+g.add_edge('D', 'H')
+g.add_edge('D', 'G')
+g.add_edge('E', 'A')
+g.add_edge('E', 'F')
+g.add_edge('E', 'D')
+g.add_edge('F', 'K')
+g.add_edge('F', 'J')
+g.add_edge('G', 'I')
+g.add_edge('H', 'J')
+g.add_edge('H', 'I')
+g.add_edge('I', 'L')
+g.add_edge('J', 'M')
+g.add_edge('J', 'L')
+g.add_edge('K', 'J')
 
-# print('Topological Sorting -> ', end = ' ')
+print('Topological Sorting -> ', end = ' ')
 
-# # setting the starting node
-# g.stack = []
-# for i in range(len(g.node_list)):
-#     g.dfs(g.node_list[i])
-# print(g.stack)
+# setting the starting node
+g.stack = []
+for i in range(len(g.node_list)):
+    g.dfs(g.node_list[i])
+print(g.stack)
 
 
 # ----------------------------------------------------------------------------
