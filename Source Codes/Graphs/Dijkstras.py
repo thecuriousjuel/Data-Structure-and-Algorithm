@@ -46,7 +46,7 @@ class Graph:
         visited = []
 
         while len(visited) < len(self.node_list):
-            print(cost, visited)
+            # print(cost, visited)
             min_weight = float('inf')    
             for i in range(len(cost)):
                 if self.node_list[i] in visited:
