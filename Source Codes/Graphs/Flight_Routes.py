@@ -1,10 +1,10 @@
 class Graph:
-    def __init__(self, v) -> None:
+    def __init__(self, v):
         self.graph_data = [[0 for i in range(v)] for j in range(v)]
         self.node_list = []
         self.visited = [False] * v
         self.connected = False
-        self.path = []
+        self.all_paths = []
 
 
     def add_vertex(self, v):
@@ -29,50 +29,46 @@ class Graph:
             self.path.append(stop)
             return
 
-
         for i in range(len(self.graph_data[start_index])):
             if self.graph_data[start_index][i] != 0 and self.visited[i] == False:
                 self.visited[start_index] = True
                 return self.is_path_present(self.node_list[i], stop)
 
 
-        
-    def get_all_routes(self, start, stop, path = []):
+    def get_all_routes(self, start, stop, path=[]):
         path.append(start)
-        print(1, start, stop, path)
+        # print(1, start, stop, path)
 
         start_index = self.node_list.index(start)
         stop_index = self.node_list.index(stop)
 
         for i in range(len(self.graph_data[start_index])):
             if self.graph_data[start_index][i] != 0 and self.visited[i] == False:
-                
 
                 if i == stop_index:
                     path.append(stop)
-                    print(2, start, stop, path)
-                    print('-' * 10)               
-                else:
-                    self.get_all_routes(self.node_list[i], stop, path)
-                    self.visited[start_index] = True
-                    print(3, start, stop, path)
+                    self.all_paths.append(path[:])
 
-                
-            
-    
+                else:
+                    if path[-1] == stop:
+                        path.pop()
+                    self.get_all_routes(self.node_list[i], stop, path[:])
+
+        self.visited[start_index] == True
+        
+
     def display(self):
-        print('\t', end = '')
+        print('\t', end='')
 
         for i in self.node_list:
-            print(i, end = '\t')
+            print(i, end='\t')
         print()
 
         for row in range(len(self.graph_data)):
-            print(self.node_list[row], end = '\t')
+            print(self.node_list[row], end='\t')
             for col in range(len(self.graph_data[row])):
                 print(self.graph_data[row][col], end='\t')
             print()
-
 
 
 no_of_vertex = 7
@@ -108,9 +104,7 @@ g.display()
 # print(f'Path Taken : {g.path}')
 
 
-
 src = 'Mum'
 dest = 'NY'
 g.get_all_routes(src, dest)
-print(f'Path Taken : {g.path}')
-
+print(f'Path Taken : {g.all_paths}')
