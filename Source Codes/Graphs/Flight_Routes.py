@@ -5,6 +5,7 @@ class Graph:
         self.visited = [False] * v
         self.connected = False
         self.all_paths = []
+        self.all_paths_distances = []
 
 
     def add_vertex(self, v):
@@ -37,13 +38,12 @@ class Graph:
 
     def get_all_routes(self, start, stop, path=[]):
         path.append(start)
-        # print(1, start, stop, path)
 
         start_index = self.node_list.index(start)
         stop_index = self.node_list.index(stop)
 
         for i in range(len(self.graph_data[start_index])):
-            if self.graph_data[start_index][i] != 0 and self.visited[i] == False:
+            if self.graph_data[start_index][i] != 0:
 
                 if i == stop_index:
                     path.append(stop)
@@ -54,8 +54,6 @@ class Graph:
                         path.pop()
                     self.get_all_routes(self.node_list[i], stop, path[:])
 
-        self.visited[start_index] == True
-        
 
     def display(self):
         print('\t', end='')
