@@ -5,7 +5,8 @@ class Graph:
         self.visited = [False] * v
         self.connected = False
         self.all_paths = []
-        self.all_paths_distances = []
+        self.min_path_distance = float('inf')
+        self.min_path = []
 
 
     def add_vertex(self, v):
@@ -55,6 +56,33 @@ class Graph:
                     self.get_all_routes(self.node_list[i], stop, path[:])
 
 
+
+    def all_distances(self, start, stop, path=[], d = 0):
+        path.append(start)
+
+        # print(start, stop, d)
+
+        start_index = self.node_list.index(start)
+        stop_index = self.node_list.index(stop)
+
+        for i in range(len(self.graph_data[start_index])):
+            if self.graph_data[start_index][i] != 0:
+                
+                if self.node_list[i] == stop:
+                    path.append(stop)
+                    print(path, d+self.graph_data[start_index][i])
+
+                    if  d+self.graph_data[start_index][i] < self.min_path_distance:
+                        self.min_path_distance = d+self.graph_data[start_index][i]
+                        self.min_path = path
+
+                    if i < len(self.node_list) - 1:
+                        path = path[:-1]
+
+                self.all_distances(self.node_list[i], stop, path[:], d+self.graph_data[start_index][i])
+
+
+
     def display(self):
         print('\t', end='')
 
@@ -102,7 +130,20 @@ g.display()
 # print(f'Path Taken : {g.path}')
 
 
+# src = 'Tor'
+# dest = 'Par'
+# g.get_all_routes(src, dest)
+# print(f'Source : {src}. Destination {dest}.')
+# for path in range(len(g.all_paths)):
+#     print(f'Path {path+1} : {g.all_paths[path]}')
+
+
 src = 'Mum'
-dest = 'NY'
-g.get_all_routes(src, dest)
-print(f'Path Taken : {g.all_paths}')
+dest = 'Tor'
+print(f'All the Paths from {src} to {dest} with their distances.')
+print('-' * 50)
+g.all_distances(src, dest)
+print('-' * 50)
+
+print('Minimum Distance and the Route')
+print(g.min_path_distance, g.min_path)
