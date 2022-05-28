@@ -45,30 +45,27 @@ class Graph:
             print(self.node_list[i], end = '\t')
             print(self.graph_data[i])
 
-N = 6
+N = 5
 
 g = Graph(N)
 
 
+g.add_node(4)
 g.add_node(2)
 g.add_node(5)
-g.add_node(6)
 g.add_node(7)
-g.add_node(8)
 g.add_node(9)
 
-g.add_edge(2, 5)
-g.add_edge(5, 9)
-g.add_edge(6, 8)
-g.add_edge(6, 5)
-g.add_edge(8, 7)
-g.add_edge(9, 6)
-g.add_edge(9, 8)
+g.add_edge(2, 9)
+g.add_edge(7, 2)
+g.add_edge(7, 5)
+g.add_edge(9, 5)
+
 
 g.display()
 
-A = 2
-B = 7
+A = 7
+B = 9
 out = g.reach(A, B)
 
 print(out)
