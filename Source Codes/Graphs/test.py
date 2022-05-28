@@ -1,10 +1,6 @@
-def function(i, data):
-    print(data)
-    data.append(i)
-
-    for i in range(5):
-        function(i, data)
+l = []
 
 
-
-function(0, [])
+l[1].append(5)
+l[6].append(6)
+l[7].append(7)
