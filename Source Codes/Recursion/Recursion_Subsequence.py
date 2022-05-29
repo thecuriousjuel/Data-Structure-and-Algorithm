@@ -7,5 +7,4 @@ def function(arr, index=0, l = []):
     l.append(arr[index])
     function(arr, index+1, l[:])
 
-
-function([3,2,1,5])
+function([3,2,1])
