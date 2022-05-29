@@ -4,7 +4,7 @@ class Graph:
         self.node_list = []
         self.weights = [float('inf') for _ in range(N)]
         self.visited = []
-        self.distances = {}
+        self.mst = [[0 for _ in range(N)] for _ in range(N)]
 
 
     def add_node(self, v):
@@ -16,33 +16,22 @@ class Graph:
         v2_index = self.node_list.index(v2)
 
         self.graph_data[v1_index][v2_index] = t1
+        self.graph_data[v2_index][v1_index] = t1
 
 
     def prims(self):
-        while len(self.visited) < len(self.node_list):
+        start_index = 0
+        
+        min_value = float('inf')
 
-            min_weight = float('inf')
-            t_index = 0
+        for i in range(len(self.graph_data[start_index])):
+            if self.graph_data[start_index][i] != 0 and self.visited[i] == False:
+                if self.graph_data[start_index][i] < min_value:
+                    min_value = self.graph_data[start_index][i]
+                    start_index = i
 
-            for i in range(len(self.node_list)):
-                if self.node_list[i] in self.visited:
-                    continue
-                
-                if self.weights[i] < min_weight:
-                    min_weight = self.weights[i]
-                    t_index = i
-
-
-            for i in range(len(self.graph_data[t_index])):
-
-                if self.graph_data[t_index][i] != 0 and self.node_list[i] not in self.visited:
-                    if self.graph_data[t_index][i] + self.weights[t_index] < self.weights[i]:
-                        self.weights[i] = self.graph_data[t_index][i] + self.weights[t_index]
-
-            self.visited.append(self.node_list[t_index])
+        self.visited[start_index] = True
            
-
-            
 
     def display(self):
         print('\t', end='')
@@ -55,12 +44,29 @@ class Graph:
             for j in self.graph_data[i]:
                 print(j, end='\t')
             print()
+
+
+    def display_mst(self):
+        print('\t', end='')
+        for i in self.node_list:
+            print(i, end='\t')
+        print()
+
+        for i in range(len(self.mst)):
+            print(self.node_list[i], end = '\t')
+            for j in self.mst[i]:
+                print(j, end='\t')
+            print()
             
 
+
+
+
+
+# -------------------------------------------------------------------------------
 N = 5
 
 g = Graph(N)
-
 
 g.add_node('A')
 g.add_node('B')
@@ -81,3 +87,5 @@ g.display()
 g.weights[0] = 0
 g.prims()
 print(g.weights)
+
+g.display_mst()
