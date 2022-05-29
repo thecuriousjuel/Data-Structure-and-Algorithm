@@ -3,9 +3,8 @@ def function(arr, index=0, l = []):
         print(l)
         return
 
-    l.append(arr[index])
     function(arr, index+1, l[:])
-    l.pop()
+    l.append(arr[index])
     function(arr, index+1, l[:])
 
 
