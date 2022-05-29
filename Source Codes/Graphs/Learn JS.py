@@ -51,7 +51,6 @@ N = 4
 
 g = Graph(N)
 
-
 g.add_node(2)
 g.add_node(5)
 g.add_node(7)
