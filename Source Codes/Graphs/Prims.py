@@ -3,8 +3,8 @@ class Graph:
         self.graph_data = [[0 for _ in range(N)] for _ in range(N)]
         self.node_list = []
         self.weights = [float('inf') for _ in range(N)]
-        self.tree = {}
         self.visited = []
+        self.distances = {}
 
 
     def add_node(self, v):
@@ -18,24 +18,31 @@ class Graph:
         self.graph_data[v1_index][v2_index] = t1
 
 
-    def prims(self, start, w):
-        queue = [start]
+    def prims(self):
+        while len(self.visited) < len(self.node_list):
 
-        while len(queue) > 0:
-            t = queue[0]
-            t_index = self.node_list.index(t)
+            min_weight = float('inf')
+            t_index = 0
 
-            print(t, end=' ')
+            for i in range(len(self.node_list)):
+                if self.node_list[i] in self.visited:
+                    continue
+                
+                if self.weights[i] < min_weight:
+                    min_weight = self.weights[i]
+                    t_index = i
+
 
             for i in range(len(self.graph_data[t_index])):
-                if self.graph_data[t_index][i] != 0 and self.node_list[i] not in self.visited:
-                    queue.append(self.node_list[i])
-                    self.visited.append(self.node_list[i])
 
-            queue = queue[1:]
+                if self.graph_data[t_index][i] != 0 and self.node_list[i] not in self.visited:
+                    if self.graph_data[t_index][i] + self.weights[t_index] < self.weights[i]:
+                        self.weights[i] = self.graph_data[t_index][i] + self.weights[t_index]
+
+            self.visited.append(self.node_list[t_index])
+           
 
             
-
 
     def display(self):
         print('\t', end='')
@@ -49,7 +56,6 @@ class Graph:
                 print(j, end='\t')
             print()
             
-
 
 N = 5
 
@@ -73,4 +79,5 @@ g.add_edge('D', 'E', 4)
 g.display()
 
 g.weights[0] = 0
-g.prims(g.node_list[0], g.weights[0])
+g.prims()
+print(g.weights)
