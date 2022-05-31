@@ -1,20 +1,21 @@
 def function(arr, target, index=0, l=[]):
+ 
     if index >= len(arr):
+        return
+    elif sum(l) >= target:
         if sum(l) == target:
-            return l
-        return 
+            print(l)
+        return
 
-    t = function(arr, target, index+1, l[:])
-    if t != None:
-        return t
     l.append(arr[index])
-    t = function(arr, target, index+1, l[:])
-    if t != None:
-        return t
+    function(arr, target, index, l[:])
 
+    l.pop()
+
+    function(arr, target, index+1, l[:])
 
 candidates = [2,3,6,7]
 target = 7
 
 
-print(function(candidates, target))
+function(candidates, target)
