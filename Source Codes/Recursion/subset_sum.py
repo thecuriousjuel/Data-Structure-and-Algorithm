@@ -1,20 +1,23 @@
-def function(arr, index=0, l = []):
+def function(arr, index=0, l = [], ans = []):
 
     if index >= len(arr):
-        return
-    else:
-        print(l)
+        print(l, sum(l))
+        return sum(l)
+
 
     l.append(arr[index])
-    function(arr, index+1, l)
+    t = function(arr, index+1, l[:])
+    if t:
+        ans.append(t)
+        
     l.pop()
-    function(arr, index+1, l)
+
+    t = function(arr, index+1, l[:])
+    if t:
+        ans.append(t)
 
 
 
 
-
-
-
-s = [3,1,4]
-function(s)
+s = [3,1,2]
+print(function(s))
