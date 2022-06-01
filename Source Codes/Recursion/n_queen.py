@@ -4,6 +4,7 @@ def is_safe(row, col, board, n):
     temp_col = col
 
     while row >= 0 and col >= 0:
+        # print(f'Attack on top left diagonal.')
         if board[row][col] == 'Q':
             return False
         
@@ -15,6 +16,7 @@ def is_safe(row, col, board, n):
     col = temp_col
 
     while col >= 0:
+        # print(f'Attack on Row.')
         if board[row][col] == 'Q':
             return False
 
@@ -24,6 +26,7 @@ def is_safe(row, col, board, n):
     col = temp_col
 
     while row < n and col >= 0:
+        # print(f'Attack on bottom left diagonal.')
         if board[row][col] == 'Q':
             return False
 
