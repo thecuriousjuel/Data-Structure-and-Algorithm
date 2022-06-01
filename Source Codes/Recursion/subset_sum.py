@@ -1,17 +1,23 @@
-def function(arr, index=0, l = [], ans = []):
+ans = []
+
+def function(arr, index=0, l = []):
+    global ans
 
     if index >= len(arr):
-        print(l, sum(l))
-        return sum(l)
+        # print(l, sum(l))
+        ans.append(sum(l))
+        return 
 
 
     l.append(arr[index])
-    t = function(arr, index+1, l[:])
+    function(arr, index+1, l[:])
         
     l.pop()
 
-    t = function(arr, index+1, l[:])
+    function(arr, index+1, l[:])
+
 
 
 s = [3,1,2]
-print(function(s))
+function(s)
+print(ans)
