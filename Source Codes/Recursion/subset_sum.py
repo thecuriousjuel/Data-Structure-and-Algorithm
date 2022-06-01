@@ -7,16 +7,10 @@ def function(arr, index=0, l = [], ans = []):
 
     l.append(arr[index])
     t = function(arr, index+1, l[:])
-    if t:
-        ans.append(t)
         
     l.pop()
 
     t = function(arr, index+1, l[:])
-    if t:
-        ans.append(t)
-
-
 
 
 s = [3,1,2]
