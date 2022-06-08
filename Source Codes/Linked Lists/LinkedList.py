@@ -33,7 +33,7 @@ class LinkedList:
         print()
 
 
-arr = [3,6,8,10,35,88,5,8,9]
+arr = [3,6,8,10,35,88,5,8]
 ll = LinkedList()
 
 for i in arr:
