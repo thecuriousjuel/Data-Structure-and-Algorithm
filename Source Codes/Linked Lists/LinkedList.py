@@ -33,12 +33,12 @@ class LinkedList:
         print()
 
 
-
-arr = [3,6,8,10]
+arr = [3,6,8,10,35,88,5,8,9]
 ll = LinkedList()
 
 for i in arr:
     ll.add(i)
 
-# ll.display()
+if __name__ == '__main__':
+    ll.display()
 
