@@ -7,7 +7,6 @@ def detect_cycle(head):
     flag = 0
 
     while True:
-        print(slow.data, fast.data)
         if slow is fast:
             flag = 1
             break
