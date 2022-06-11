@@ -36,18 +36,18 @@ g.add_vertex('B')
 g.add_vertex('C')
 g.add_vertex('D')
 
-g.add_edge('A', 'C')
-g.add_edge('B', 'C')
-g.add_edge('B', 'D')
-g.add_edge('C', 'A')
-g.add_edge('C', 'D')
-g.add_edge('D', 'A')
-g.add_edge('D', 'B')
-
 # g.add_edge('A', 'C')
-# g.add_edge('B', 'A')
-# g.add_edge('C', 'B')
+# g.add_edge('B', 'C')
+# g.add_edge('B', 'D')
+# g.add_edge('C', 'A')
 # g.add_edge('C', 'D')
+# g.add_edge('D', 'A')
+# g.add_edge('D', 'B')
+
+g.add_edge('A', 'C')
+g.add_edge('B', 'A')
+g.add_edge('C', 'B')
+g.add_edge('C', 'D')
 
 
 print('-----You are working on this!-----')
