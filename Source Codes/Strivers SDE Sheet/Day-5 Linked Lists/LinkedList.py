@@ -31,11 +31,10 @@ class LinkedList:
     def display(self):
         current = self.head
         
-        print('-----------Original List-----------')
+        
         while current != None:
             print(current.data, end = ' ')
             current = current.next
-        print('\n-----------------------------------')
             
             
 my_list = LinkedList()
@@ -46,5 +45,8 @@ my_list.add_node(4)
 my_list.add_node(5)
 # my_list.add_node(6)
 
+print('-----------Original List-----------')
 my_list.display()
-print()
+print('\n-----------------------------------')
+
+print('-----------Changed List------------')
