@@ -1,4 +1,4 @@
-from LinkedList import ll 
+from LinkedList import my_list
 
 def reverse(head):
     past = None
@@ -15,9 +15,9 @@ def reverse(head):
         
         
         
-new_head = reverse(ll.head)
+new_head = reverse(my_list.head)
 while new_head:
-    print(new_head.data, end='\t')
+    print(new_head.data, end=' ')
     new_head = new_head.next
     
     
