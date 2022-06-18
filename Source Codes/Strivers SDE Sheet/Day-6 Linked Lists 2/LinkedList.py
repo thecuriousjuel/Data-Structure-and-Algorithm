@@ -38,12 +38,12 @@ class LinkedList:
             
             
 my_list = LinkedList()
-my_list.add_node(1)
-my_list.add_node(2)
-my_list.add_node(3)
-my_list.add_node(3)
-my_list.add_node(2)
-my_list.add_node(1)
+# my_list.add_node(1)
+# my_list.add_node(2)
+# my_list.add_node(3)
+# my_list.add_node(3)
+# my_list.add_node(2)
+# my_list.add_node(1)
 # my_list.add_node(6)
 
 print('-----------Original List-----------')
