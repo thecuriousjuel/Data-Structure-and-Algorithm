@@ -1,5 +1,5 @@
-N = 10
-nums = [4,4,2,4,3,4,4,3,2,4]
+nums = [10,20,40,40,40]
+N = len(nums)
 
 count = {}
 
@@ -12,11 +12,11 @@ for i in nums:
     count[i] += 1
     
 
-n = N // 2
+n = N // 3
 
 for i in count:
     if count[i] > n:
         print(i)
-        break
+
     
     
