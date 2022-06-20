@@ -43,7 +43,7 @@ bst.add_node(88)
 bst.add_node(92)
 bst.add_node(76)
 bst.add_node(43)
-bst.add_node(73)
+
                                  
                                  
                                  
