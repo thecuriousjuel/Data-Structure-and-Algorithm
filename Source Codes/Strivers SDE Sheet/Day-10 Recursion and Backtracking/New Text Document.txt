@@ -1,0 +1,61 @@
+def display(matrix):
+    print('-' * 20)
+    for i in matrix:
+        for j in i:
+            print(j, end= ' ')
+            
+        print()
+            
+            
+            
+def is_valid(matrix, num, row, col):
+    
+    for i in range(len(matrix)):
+            
+        if num == matrix[row][i]:
+            return False
+        
+        if num == matrix[i][col]:
+            return False
+        
+        if num == matrix[3 * (row // 3) + i // 3][3 * (col // 3) + i % 3]:
+            return False
+        
+    return True
+            
+            
+def sudoku(matrix):
+    display(matrix)
+    for i in range(len(matrix)):
+        for j in range(len(matrix)):
+            if matrix[i][j] == '.':
+                for k in range(9):
+                    if is_valid(matrix, i, j, k):
+                        matrix[i][j] = k
+                        if sudoku(matrix):
+                            return True
+                        else:
+                            matrix[i][j] = '.'
+                
+                return False
+    return True
+
+
+
+
+matrix=[['9', '5', '7', '.', '1', '3', '.', '8', '4'],
+        ['4', '8', '3', '.', '5', '7', '1', '.', '6'],
+        ['.', '1', '2', '.', '4', '9', '5', '3', '7'],
+        ['1', '7', '.', '3', '.', '4', '9', '.', '2'],
+        ['5', '.', '4', '9', '7', '.', '3', '6', '.'],
+        ['3', '.', '9', '5', '.', '8', '7', '.', '1'],
+        ['8', '4', '5', '7', '9', '.', '6', '1', '3'],
+        ['.', '9', '1', '.', '3', '6', '.', '7', '5'],
+        ['7', '.', '6', '1', '8', '5', '4', '.', '9']]
+
+
+display(matrix)
+sudoku(matrix)
+
+
+
