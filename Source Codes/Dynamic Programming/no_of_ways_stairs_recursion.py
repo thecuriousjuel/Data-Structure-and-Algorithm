@@ -10,4 +10,4 @@ def fun(n):
 
 
 
-print(fun(3))
+print(fun(30))

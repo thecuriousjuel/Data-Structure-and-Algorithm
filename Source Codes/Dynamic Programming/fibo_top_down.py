@@ -10,7 +10,7 @@
 # print(dp[n])
 
 
-# Code 2 :
+# Code 2 : Optimized code
 
 n = 7
 count = 0
