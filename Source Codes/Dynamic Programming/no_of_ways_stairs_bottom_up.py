@@ -6,14 +6,10 @@ def fun(n, mydict):
     if n in mydict.keys():
         return mydict[n]
 
-    l = fun(n-1, mydict)
-    r = fun(n-2, mydict)
+    mydict[n] = fun(n-1, mydict) + fun(n-2, mydict)
 
-    mydict[n-1] = l
-    mydict[n-2] = r
-
-    return l + r
+    return mydict[n]
 
 
 mydict = {}
-print(fun(5, mydict))
+print(fun(6, mydict))
