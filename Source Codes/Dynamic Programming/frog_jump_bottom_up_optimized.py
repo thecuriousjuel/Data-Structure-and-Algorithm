@@ -18,7 +18,7 @@ def fun(arr, n):
 
     return curi
 
-arr = [10, 20, 30, 10, 60]
+arr = [10, 20, 30, 10, 60, 10]
 n = len(arr)
 
 print(fun(arr, n))
