@@ -1,17 +1,33 @@
-def fib(n, mydict):
+# Code 1 : Working code
 
-    if n <= 1:
-        return n
-    
-    if n in mydict.keys():
-        return mydict[n]
-    
-    mydict[n] = fib(n-1, mydict) + fib(n-2, mydict)
-    
-    return mydict[n]
+# n = 8
+
+# dp = {0:0, 1:1}
+
+# for i in range(2, n+1):
+#     dp[i] = dp[i-1] + dp[i-2]
+
+# print(dp[n])
 
 
-mydict = {}
-out = fib(6, mydict)
-print(mydict)
-print(out)
+# Code 2 : Optimized code
+
+n = 7
+count = 0
+
+a = 0
+b = 1
+c = 0
+
+
+while count < n:
+    c = a + b
+    b = a
+    a = c
+
+    count += 1
+    
+print(c)
+
+
+
