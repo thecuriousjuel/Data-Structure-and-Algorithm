@@ -9,6 +9,8 @@ def fun(arr, n, dp={}):
             right = dp[i-2] + abs(arr[i] - arr[i-2])
 
         dp[i] = min(left, right)
+        
+        print(dp)
 
     return dp[n-1]
 

@@ -17,7 +17,7 @@ def fun(arr, n, dp={}):
     return dp[n]
 
 
-arr = [10, 20, 30, 10, 60]
+arr = [10, 20, 30, 10, 60, 10]
 n = len(arr)
 
 print(fun(arr, n-1))
