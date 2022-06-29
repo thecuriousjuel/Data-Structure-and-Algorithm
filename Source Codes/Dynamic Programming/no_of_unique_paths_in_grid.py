@@ -22,8 +22,8 @@ def fun(maze, row, col, path):
     return right + down
 
 
-N = 15
-M = 15
+N = 5
+M = 5
 row, col = 0, 0
 path = []
 

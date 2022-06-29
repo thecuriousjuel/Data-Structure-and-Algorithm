@@ -16,12 +16,14 @@ def fun(arr, ind, dp):
     return dp[ind]
 
 
-nums = [2, 1, 3, 9]
+nums = [2, 1, 3, 9, 4]
 n = len(nums)
 dp = {}
 
-l = fun(nums[:-1], n-1-1, dp)
-r = fun(nums[1:], n-1-1, dp)
+l = fun(nums[:-1], n-2, dp)
+dp = {}
+
+r = fun(nums[1:], n-2, dp)
 
 print(max(l, r))
 

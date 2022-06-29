@@ -12,8 +12,6 @@ def fun(matrix, row, col, dp):
     right = matrix[row][col] + fun(matrix, row, col+1, dp)
     down = matrix[row][col] + fun(matrix, row+1, col, dp)
 
-    path.pop()
-
     dp[row][col] = min(right, down)
 
     return dp[row][col]
@@ -22,8 +20,7 @@ def fun(matrix, row, col, dp):
 matrix = [[10, 8, 2], [10, 5, 100], [1, 1, 2]]
 row = 0
 col = 0
-path = []
 dp = [[0 for _ in range(len(matrix[0]))] for _ in range(len(matrix))]
 
-print(fun(matrix, row, col, path, dp))
+print(fun(matrix, row, col, dp))
 

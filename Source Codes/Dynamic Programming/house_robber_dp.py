@@ -23,4 +23,4 @@ dp = {}
 print(fun(nums, n-1, dp))
 
 
-    
+     
