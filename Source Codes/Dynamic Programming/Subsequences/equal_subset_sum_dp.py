@@ -35,9 +35,11 @@ def array_check(arr):
     dp = [[-1 for _ in range(target+1)] for _ in range(n)]
 
     out = fun(arr, n-1, target, dp)
+
     return out
 
 arr = [1,2,3,4,1,2,1]
 print(array_check(arr))
+
 
 
