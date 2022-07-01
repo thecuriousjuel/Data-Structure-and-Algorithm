@@ -5,18 +5,21 @@ This repository contains all the Data Structure and Algorithms that I have worke
 
  
 Data Structures
-1. Linked Lists
-2. Stacks
-3. Queues
-4. Binary Trees
-5. Binary Search Trees
-6. Graphs
+1. Arrays
+2. Linked Lists
+3. Stacks
+4. Queues
+5. Heaps
+6. Binary Trees
+7. Binary Search Trees
+8. Graphs
 
 
 
-ALgorithms
-1. Recursion
-2. Greedy
-3. Dynamic Programming
+Algorithms
+1. Greedy
+2. Recursion
+3. Divide and Conquer
+4. Dynamic Programming
 
 
