@@ -1,21 +1,20 @@
-def fun(arr, ind, target):
-    
+def fun(arr, ind, target):    
     if target == 0:
         return True
     
     if ind == 0:
         return arr[ind] == target
- 
+    
     not_take = fun(arr, ind-1, target)
-    
+
     take = False
-    if arr[ind] <= target: 
+    if target >= arr[ind]: 
         take = fun(arr, ind-1, target-arr[ind])
-    
+      
     return not_take or take
 
 
-arr = [1,2,3,4]
+arr = [4, 1, 3, 2]
 n = len(arr)
 target = 11
 
