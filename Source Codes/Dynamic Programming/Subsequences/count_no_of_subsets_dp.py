@@ -34,5 +34,6 @@ dp = [[-1 for _ in range(target+1)] for _ in range(len(arr))]
 out = fun(arr, ind, target, path, dp)
 print(out)
 
+
         
 
