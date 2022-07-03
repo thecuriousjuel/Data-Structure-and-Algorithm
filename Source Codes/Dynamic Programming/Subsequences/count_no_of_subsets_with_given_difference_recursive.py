@@ -15,7 +15,7 @@ def fun(arr, ind, target, path):
     
     not_pick = fun(arr, ind+1, target, path)
 
-    return pick + not_pick
+    return pick + not_pick1
 
 
 arr = [1, 2, 2, 3, 5, 3, 6] * 5
