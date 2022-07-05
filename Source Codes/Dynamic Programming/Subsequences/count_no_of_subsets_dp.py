@@ -23,8 +23,8 @@ def fun(arr, ind, target, path, dp):
     return dp[ind][target]
 
 
-#arr = [1, 2, 2, 3, 5, 6]
-arr = [0, 0, 1]
+arr = [1, 2, 2, 3, 5, 6]
+#arr = [0, 0, 1]
 ind = 0
 target = 6
 path = []
