@@ -10,9 +10,10 @@ Data Structures
 3. Stacks
 4. Queues
 5. Heaps
-6. Binary Trees
-7. Binary Search Trees
-8. Graphs
+6. Dictionary/HashMaps
+7. Binary Trees
+8. Binary Search Trees
+9. Graphs
 
 
 
