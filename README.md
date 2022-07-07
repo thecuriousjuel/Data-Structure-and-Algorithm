@@ -17,11 +17,11 @@ Data Structures
 9. Graphs
 
 
-
 Algorithms
-1. Greedy
-2. Recursion
-3. Divide and Conquer
-4. Dynamic Programming
+1. Brute Force
+2. Greedy
+3. Recursion
+4. Divide and Conquer
+5. Dynamic Programming
 
 
