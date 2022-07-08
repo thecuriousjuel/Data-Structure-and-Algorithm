@@ -1,7 +1,7 @@
 # Data-Structure-and-Algorithm
 
 This repository contains all the Data Structure and Algorithms that I have worked on.
-Programming language used is Python.
+Programming language used is Python, which is an high level object oriented programming language.
 
 
  
