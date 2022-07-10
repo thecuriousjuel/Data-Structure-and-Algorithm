@@ -1,7 +1,4 @@
 def fun():
-    i = 0
-    j = 0
-    
     for i in range(100):
         for j in range(100):
             if i+j == 10 and 3*i+5*j == 42:
