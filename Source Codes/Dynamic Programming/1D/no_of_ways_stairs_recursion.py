@@ -1,5 +1,4 @@
 def fun(n):
-
     if n <= 1:
         return 1
 
@@ -10,4 +9,4 @@ def fun(n):
 
 
 
-print(fun(5))
+print(fun(0))

@@ -8,4 +8,5 @@ def fun(ind):
     return one_step + two_step
 
 
-print(fun(4))
+print(fun(2))
+print(fun(3))
