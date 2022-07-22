@@ -7,7 +7,7 @@ def fun(arr, ind, path, target):
         return False
     
     if ind == len(arr):
-        return
+        return False
 
     
     path.append(arr[ind])
