@@ -37,4 +37,4 @@ j1 = 0
 j2 = len(grid[0])-1
 
 print(fun(grid, i, j1, j2))
-            
+

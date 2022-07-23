@@ -20,7 +20,7 @@ def fun(arr, ind, k):
 
 
 arr = [1,2,3,4]
-k = 4
+k = 8
 
 out = fun(arr, ind=0, k=k)
 
