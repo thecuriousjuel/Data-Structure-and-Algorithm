@@ -19,9 +19,9 @@ def fun(wt, val, ind, W, dp):
     return dp[ind][W]
 
 
-wt = [1, 3, 4, 5]
-val = [10, 40, 50, 70]
-W = 8
+wt = [5, 10, 15]
+val = [10, 30, 20]
+W = 100
 
 dp = [[-1 for _ in range(W+1)] for _ in range(len(wt))]
 
