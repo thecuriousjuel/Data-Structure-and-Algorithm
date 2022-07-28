@@ -13,8 +13,8 @@ def fun(str1, str2, ind1, ind2):
     return max(left, right)
     
 
-str1 = 'fede'
-str2 = 'fede'
+str1 = 'f01e2d3e4'
+str2 = 'f5e6d7e8'
 
 ind1 = len(str1)
 ind2 = len(str2)
