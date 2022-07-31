@@ -18,8 +18,8 @@ def fun(s1, s2, i, j):
 
 
 
-s1 = 'horse'
-s2 = 'ros'
+s1 = 'biswajit'
+s2 = 'bisso'
 
 n = len(s1)
 m = len(s2)
