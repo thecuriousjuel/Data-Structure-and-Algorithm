@@ -9,7 +9,8 @@ def fun(str1, str2, ind1, ind2, dp):
         return dp[ind1][ind2]
     
     if str1[ind1] == str2[ind2]:
-        return fun(str1, str2, ind1-1, ind2-1, dp) + fun(str1, str2, ind1-1, ind2, dp)
+        dp[ind1][ind2] = fun(str1, str2, ind1-1, ind2-1, dp) + fun(str1, str2, ind1-1, ind2, dp)
+        return dp[ind1][ind2]
     
     dp[ind1][ind2] = fun(str1, str2, ind1-1, ind2, dp)
     
