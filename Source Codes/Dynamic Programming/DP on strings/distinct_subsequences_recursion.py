@@ -1,23 +1,23 @@
-def fun(str1, str2, ind1, new_str):
+def fun(str1, str2, ind1, ind2):
+    if ind2 < 0:
+        return 1
     
-    if ind1 == len(str1):
-        if new_str == str2:
-            print(new_str)
-        return ''
-
+    if ind1 < 0:
+        return 0
     
-    new_str += str1[ind1]
-    pick = str1[ind1] + fun(str1, str2, ind1+1, new_str)
-    new_str = new_str[:-1]
+    if str1[ind1] == str2[ind2]:
+        return fun(str1, str2, ind1-1, ind2-1) + fun(str1, str2, ind1-1, ind2)
     
-    not_pick = '' + fun(str1, str2, ind1+1, new_str)
+    return fun(str1, str2, ind1-1, ind2)
+    
 
-    return max(pick, not_pick)
 
-
-str1 = 'babgbag'
-str2 = 'bag'
+str1 = 'rabbbit'
+str2 = 'rabbit'
 
 ind1 = len(str1)
+ind2 = len(str2)
 
-fun(str1, str2, ind1=0, new_str='')
+out = fun(str1, str2, ind1-1, ind2-1)
+print(out)
+
