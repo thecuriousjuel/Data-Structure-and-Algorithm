@@ -3,10 +3,10 @@ def fun(arr, ind, buy):
         return 0
 
 
-    if buy == False:
-        profit = max(-arr[ind] + fun(arr, ind+1, True), 0 + fun(arr, ind+1, False))
+    if buy == True:
+        profit = max(-arr[ind] + fun(arr, ind+1, False), 0 + fun(arr, ind+1, True))
     else:
-        profit = max(arr[ind] + fun(arr, ind+1, False), 0 + fun(arr, ind+1, True))
+        profit = max(arr[ind] + fun(arr, ind+1, True), 0 + fun(arr, ind+1, False))
         
     return profit
 
@@ -14,5 +14,5 @@ def fun(arr, ind, buy):
 arr = [7,1,5,3,6,4]
 ind = 0
 
-out = fun(arr, ind, False)
+out = fun(arr, ind, True)
 print(out)
