@@ -1,11 +1,11 @@
 def fun(arr):
     
     n = len(arr)
-    dp = [0 for _ in range(n+1)]
+    dp = [0 for _ in range(n)]
     
-    dp[n] = True
+    dp[n-1] = True
     
-    for ind in range(n-1, -1, -1):
+    for ind in range(n-2, -1, -1):
         k = arr[ind]
         temp = False
         
@@ -15,11 +15,10 @@ def fun(arr):
             
         dp[ind] = temp
         
-    print(dp)
-    return dp[ind]
+    return dp[0]
     
   
-arr = [2,3,1,1,4]
+arr = [i for i in range(1000)]
 
 out = fun(arr)
 
