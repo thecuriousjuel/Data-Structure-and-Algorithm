@@ -1,3 +1,5 @@
+# Buy and Sell infinite times
+
 def fun(arr, ind, buy):
     if ind == len(arr):
         return 0

@@ -1,3 +1,5 @@
+# Buy once and Sell once
+
 def fun(arr):
     profit = 0
     mini = arr[0]

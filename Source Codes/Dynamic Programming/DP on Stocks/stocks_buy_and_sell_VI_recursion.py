@@ -1,3 +1,5 @@
+# Buy and sell infinite times with transaction fee
+
 def fun(arr, ind, buy, fee):
     
     if ind == len(arr):

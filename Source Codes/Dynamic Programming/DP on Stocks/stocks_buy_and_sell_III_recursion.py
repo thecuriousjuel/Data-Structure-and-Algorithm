@@ -1,3 +1,5 @@
+# Buy and Sell two times only
+
 def fun(arr, ind, buy, count):
     
     if count == 0 or ind == len(arr):

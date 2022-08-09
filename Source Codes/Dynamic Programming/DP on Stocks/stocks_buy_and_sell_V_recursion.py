@@ -1,3 +1,5 @@
+# Buy and Sell infinite times but with cooldown
+
 def fun(arr, ind, buy):
     
     if ind >= len(arr):
