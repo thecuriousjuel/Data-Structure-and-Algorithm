@@ -10,8 +10,8 @@ def fun(node):
     
     if node.left == None or node.right == None:
         return max(left, right)
-    
-    return min(left, right)
+    else:
+        return min(left, right)
 
 
 out = fun(bst1)
