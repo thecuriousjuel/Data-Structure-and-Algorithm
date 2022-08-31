@@ -2,72 +2,42 @@ from bst_hardcoded import bst1
 from collections import defaultdict
 
 
-def fun(root,q_dict):
+def fun(root, q_dict):
     
     queue = [(root, 0, 0)]
     
-    q_dict[0] = [{0 : [root.data]}]
-    
-    while len(queue) > 0:
-        q = queue.pop(0)
+    while queue:
+        size = len(queue)
         
-        if q[0].left:
-            d = q[1]-1
-            l = q[2]+1
-            queue.append((q[0].left, d, l))
-            
-            
-            if q_dict[d] == None:
-                q_dict[d] = [{l : [q[0].left.data]}]
-            else:
-                flag = False
-                for i in range(len(q_dict[d])):
-                    key, = q_dict[d][i]
-                    if key == l:
-                        q_dict[d][i][l].append(q[0].left.data)
-                        q_dict[d][i][l].sort()
-                        
-                        flag = True
-                
-                if flag == False:
-                    q_dict[d].append({l : [q[0].left.data]})
-                    
-        if q[0].right:
-            d = q[1]+1
-            l = q[2]+1
-            queue.append((q[0].right, d, l))
-            
-            
-            if q_dict[d] == None:
-                q_dict[d] = [{l : [q[0].right.data]}]
-            else:
-                flag = False
-                for i in range(len(q_dict[d])):
-                    key, = q_dict[d][i]
-                    if key == l:
-                        flag = True
-                        q_dict[d][i][l].append(q[0].right.data)
-                        q_dict[d][i][l].sort()
-                
-                if flag == False:
-                    q_dict[d].append({l : [q[0].right.data]})
+        for _ in range(size):
+        
+            node, d, l = queue.pop(0)
+            q_dict[d].append((l, node.data))                      
+        
+            if node.left:
+                queue.append((node.left, d-1, l+1))
+
+            if node.right:
+                queue.append((node.right, d+1, l+1))
 
 
 def display(q_dict):
-    key = sorted(q_dict)
+    print(q_dict)
     output = []
-    for i in key:
+    
+    for i in sorted(q_dict):
         temp = []
-        for j in q_dict[i]:
-            for k, item in j.items():
-                temp.extend(item)
+        for j in sorted(q_dict[i]):
+            temp.append(j[1])
         output.append(temp)
+    
     
     return output
 
 
-q_dict = defaultdict(lambda: None)
+q_dict = defaultdict(list)
 fun(bst1, q_dict)
+
 output = display(q_dict)
 print(output)
 
