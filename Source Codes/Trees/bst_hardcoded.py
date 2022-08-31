@@ -68,7 +68,7 @@ bst8.left = bst9
 bst9.left = bst10
 bst9.right = bst11
 
-"""
+
 
 bst4 = Node(4)
 
@@ -79,4 +79,39 @@ bst2 = Node(2)
 bst4.right = bst6
 bst6.left = bst3
 bst3.right = bst2
+
+"""
+
+bst1 = Node(1)
+bst2 = Node(2)
+bst3 = Node(3)
+bst4 = Node(4)
+bst5 = Node(5)
+bst6 = Node(6)
+
+bst9 = Node(9)
+bst10 = Node(10)
+bst11 = Node(10)
+
+bst1.left = bst2
+bst1.right = bst3
+
+bst2.left = bst4
+bst2.right = bst10
+
+bst4.right = bst5
+
+bst5.right = bst6
+
+bst3.left = bst9
+bst3.right = bst11
+
+
+
+
+
+
+
+
+
 
