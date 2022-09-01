@@ -80,7 +80,6 @@ bst4.right = bst6
 bst6.left = bst3
 bst3.right = bst2
 
-"""
 
 bst1 = Node(1)
 bst2 = Node(2)
@@ -107,11 +106,22 @@ bst3.left = bst9
 bst3.right = bst11
 
 
+"""
 
+bst1 = Node(1)
+bst2 = Node(2)
+bst3 = Node(2)
+bst4 = Node(3)
+bst5 = Node(4)
+bst6 = Node(4)
+bst7 = Node(3)
 
+bst1.left = bst2
+bst1.right = bst3
 
+bst2.left = bst3
+bst2.right = bst5
 
-
-
-
+bst3.left = bst6
+bst3.right = bst7
 
