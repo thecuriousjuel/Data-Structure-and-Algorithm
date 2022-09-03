@@ -1,42 +1,36 @@
-from bst_hardcoded import bst1
-
-
-def fun(root):
-    queue = [root]
-    output = [[root.data]]
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
     
-    while queue:
-        size = len(queue)
-        temp = []
+    def fun(self, l_root, r_root):
         
-        for i in range(size):
-            q = queue.pop(0)
+        # if nodes are not matching. Eg- one node contains value and the other is None
+        if l_root == None or r_root == None:
+            return l_root == r_root
             
-            if q.left:
-                queue.append(q.left)
-                temp.append(q.left.data)
-                
-            if q.right:
-                queue.append(q.right)
-                temp.append(q.right.data)
+        # Checking for value match
+        if l_root.val != r_root.val:
+            return False
         
-        if temp:
-            output.append(temp)
-            if len(temp) % 2 != 0:
-                return False
-            
-            size = len(temp)
-            for i in range(size // 2):
-                if temp[i] == temp[size-i-1]:
-                    continue
-                else:
-                    return False
-    print(output)
+        # Left Tree- Left Traversal, Right Tree- Right Traversal
+        left = self.fun(l_root.left, r_root.right)
+        
+        # Left Tree- Right Traversal, Right Tree- Left Traversal
+        right = self.fun(l_root.right, r_root.left)
+
+        # Returning True if both the trees and subtrees are identical 
+        return left and right
     
-    return True
-          
-              
-out = fun(bst1)
-print(out)
 
-
+    
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        # Calling method
+        return self.fun(root, root)
+        
+        
+        
+        
