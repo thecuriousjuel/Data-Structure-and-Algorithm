@@ -5,22 +5,30 @@ class Node:
         self.right = None
 
 
-bst1 = Node(50)
-bst2 = Node(7)
-bst3 = Node(2)
-bst4 = Node(3)
+bst3 = Node(3)
 bst5 = Node(5)
-bst6 = Node(1)
-bst7 = Node(30)
+bst1 = Node(1)
+bst6 = Node(6)
+bst2 = Node(2)
+bst0 = Node(0)
+bst8 = Node(8)
+bst7 = Node(7)
+bst4 = Node(4)
+bst9 = Node(9)
 
-bst1.left = bst2
-bst1.right = bst3
+bst3.left = bst5
+bst3.right = bst1
 
-bst2.left = bst4
-bst2.right = bst5
+bst5.left = bst6
+bst5.right = bst2
 
-bst3.left = bst6
-bst3.right = bst7
+bst2.left = bst7
+bst2.right = bst4
+
+bst1.left = bst0
+bst1.right = bst8
+
+bst6.left = bst9
 
 
 
