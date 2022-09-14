@@ -1,6 +1,6 @@
 class Node:
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, val):
+        self.val = val
         self.next = None
 
 
@@ -9,8 +9,8 @@ class LinkedList:
         self.head = None
 
 
-    def add(self, data):
-        new_node = Node(data)
+    def add(self, val):
+        new_node = Node(val)
 
         if self.head == None:
             self.head = new_node
@@ -27,23 +27,19 @@ class LinkedList:
         current = self.head
 
         while current != None:
-            print(current.data, end = '\t')
+            print(current.val, end = '  ')
             current = current.next
 
         print()
 
 
-arr = [3,6,8,10,35,88,5,8]
-# arr = [1, 1]
-# arr = [1,2,3,4,5]
+arr = [1,1,2,2,3]
 
-ll = LinkedList()
+l = LinkedList()
 
 for i in arr:
-    ll.add(i)
-    
-ll.display()
+    l.add(i)
 
-# if __name__ == '__main__':
-#     ll.display()
+if __name__ == '__main__':
+    l.display()
 
